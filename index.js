@@ -4,6 +4,10 @@ var Handlebars = require("handlebars");
 var utils = require('handlebars-utils');
 var marked = require('marked');
 var moment = require('moment');
+const H = require('just-handlebars-helpers');
+
+// Register just-handlebars-helpers with handlebars
+H.registerHelpers(Handlebars);
 
 Handlebars.registerHelper('markdown', function(str, locals, options) {
 	if (typeof str !== 'string') {

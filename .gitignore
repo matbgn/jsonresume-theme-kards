@@ -4,3 +4,4 @@ node_modules/
 .idea/
 resume.json
 public
+package-lock.json

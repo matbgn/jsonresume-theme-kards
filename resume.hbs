@@ -44,7 +44,7 @@
             <a data-test="menu-toggle" class="menu-toggle" href="#"><span>Menu</span></a>
 
             <div class="logo">
-                <a href="index.html">Resume</a>
+                <a href="index.html">My Resume</a>
             </div>
 
             <nav id="main-nav-wrap">
@@ -339,6 +339,7 @@
                 <div class="timeline-wrap">
 
                     {{#each resume.education}}
+                    {{#if (neqw (excerpt studyType 13) 'Certification...')}}
                         <div class="timeline-block">
 
                             <div class="timeline-ico">
@@ -356,6 +357,49 @@
                             </div>
 
                         </div> <!-- /timeline-block -->
+                        {{/if}}
+                    {{/each}}
+
+                </div> <!-- /timeline-wrap -->
+
+            </div> <!-- /col-twelve -->
+
+        </div> <!-- /resume-timeline -->
+    {{/if}}
+
+    {{#if resume.education}}
+        <div class="row resume-timeline">
+
+            <div class="col-twelve resume-header">
+
+                <h2>Certifications</h2>
+
+            </div> <!-- /resume-header -->
+
+            <div class="col-twelve">
+
+                <div class="timeline-wrap">
+
+                    {{#each resume.education}}
+                        {{#if (eqw (excerpt studyType 13) 'Certification...')}}
+                        <div class="timeline-block">
+
+                            <div class="timeline-ico">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+    
+                            <div class="timeline-header">
+                                <h3>{{studyType}}</h3>                             
+                                <p>{{date startDate}} - {{date endDate}}</p>
+                            </div>
+
+                            <div class="timeline-content">
+                                <h4>{{institution}}</h4>
+                                <p>{{area}}</p>
+                            </div>
+
+                        </div> <!-- /timeline-block -->
+                        {{/if}}
                     {{/each}}
 
                 </div> <!-- /timeline-wrap -->
