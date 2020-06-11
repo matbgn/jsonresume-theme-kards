@@ -2,3 +2,5 @@
 node_modules/
 .envrc
 .idea/
+resume.json
+public
