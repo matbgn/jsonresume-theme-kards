@@ -1,0 +1,108 @@
+= JSON Resume Kards Theme 
+Matthieu Borgognon
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+[link=https://percy.io/XuluWarrior/jsonresume-theme-kards]
+image::https://percy.io/static/images/percy-badge.svg[This project is using Percy.io for visual regression testing.]
+
+
+This is a theme for http://jsonresume.org/[JSON Resume] based on https://www.styleshout.com/free-templates/kards/[Kards design] by https://www.styleshout.com/[styleshout].
+
+.Previews
+[%header,cols=2*]
+|===
+| image:https://xuluwarrior.github.io/jsonresume-theme-kards/resume-1.png[Example resume (intro), link=https://xuluwarrior.github.io/jsonresume-theme-kards/resume.html]
+| image:https://xuluwarrior.github.io/jsonresume-theme-kards/resume-2.png[Example resume (about), link=https://xuluwarrior.github.io/jsonresume-theme-kards/resume.html#about]
+
+| image:https://xuluwarrior.github.io/jsonresume-theme-kards/resume-3.png[Example resume (profile), link=https://xuluwarrior.github.io/jsonresume-theme-kards/resume.html#about]
+| image:https://xuluwarrior.github.io/jsonresume-theme-kards/resume-4.png[Example resume, link=https://xuluwarrior.github.io/jsonresume-theme-kards/resume.html#resume]
+|===
+
+## Getting started
+
+### Install the command line
+
+Install https://github.com/jsonresume/resume-cli[resume-cli] to render your resume.
+
+```
+npm install -g resume-cli
+```
+
+### Serve theme
+This will use the local version of the theme to render the resume.json
+If there is a local copy of resume.json this will be used.  Otherwise, it will use the default resume.json from https://jsonresume.org/[jsonresume.org]
+
+While inside the theme folder, simply run:
+
+```
+node export.js ~/path/to/your/resume.json
+```
+[NOTE]
+====
+You can also place your resume.json in the root folder of this project and simply run:
+
+```
+node export.js
+```
+====
+
+You should now be able to render your html with a local server, for instance for VSCode:
+
+```
+code --install-extension ritwickdey.LiveServer
+```
+
+TIP: **Right click on the newly generated `index.html`** Congratulations, you've made it!
+
+## Editing template
+### Get source from GitHub
+```
+git clone https://github.com/XuluWarrior/jsonresume-theme-kards.git
+cd jsonresume-theme-orbit
+```
+
+
+### Change background images
+In order for the generated html to be self contained this theme ships with the background images embedded in the css.
+To change the images, edit **Kards10/less/config.less**
+```
+@bg-img-url: "data:image/...";
+@intro-bg-img-url: "data:image/...";
+@logo-img-url: "data:image/...";
+```
+and then rebuild styles.css
+```
+npm run build:styles
+```
+
+### Extra sections
+The original Kards design included extra sections such as https://www.styleshout.com/templates/preview/Kards10/#portfolio[Portfolio] and https://www.styleshout.com/templates/preview/Kards10/index.html#services[Services].  These don't map directly to jsonresume and so are commented out in the template.
+
+To include them in your template, edit **resume.hbs** and uncomment the appropriate sections and personalise the content e.g.
+
+```
+<!--&lt;!&ndash; Portfolio Section-->
+<!--================================================== &ndash;&gt;-->
+<!--<section id="portfolio">-->
+
+ ...
+
+<!--</section> &lt;!&ndash; /portfolio &ndash;&gt;-->  
+```
+
+[%header,cols=2*]
+|===
+| image:https://xuluwarrior.github.io/jsonresume-theme-kards/resume-portfolio.png[Portfolio section, link=https://www.styleshout.com/templates/preview/Kards10/#portfolio] 
+| image:https://xuluwarrior.github.io/jsonresume-theme-kards/resume-services.png[Services section,link=https://www.styleshout.com/templates/preview/Kards10/index.html#services]
+|===
+
+## License
+Template design is available under http://creativecommons.org/licenses/by/3.0/[Creative Commons Attribution 3.0 License] attributed to https://www.styleshout.com/[styleshout]
+
+Source code for generating resume is available under http://mths.be/mit[the MIT license].
