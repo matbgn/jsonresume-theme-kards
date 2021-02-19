@@ -33,6 +33,25 @@ Handlebars.registerHelper('markdown', function(str, locals, options) {
 		markup;
 });
 
+Handlebars.registerHelper('dontShowBr', function(str, locals, options) {
+	if (typeof str !== 'string') {
+		options = locals;
+		locals = str;
+		str = true;
+	}
+
+	if (utils.isOptions(locals)) {
+		options = locals;
+		locals = {};
+	}
+
+	var ctx = utils.context(this, locals, options);
+	var val = utils.value(str, ctx, options);
+
+	// Remove all <br> so we don't show it as markdown
+	return marked(val).replace(/&lt;br&gt;/gi, "");
+});
+
 Handlebars.registerHelper('displayUrl', function(str) {
 	return str.replace(/https?:\/\//, "");
 });
