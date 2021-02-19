@@ -52,8 +52,8 @@ Handlebars.registerHelper('dontShowBr', function(str, locals, options) {
 	let markup = marked(val).replace(/\<p\>/gi, "<p><ul><li>");
 	markup = markup.replace(/&lt;br&gt;/gi, "</li><li>");
 	markup = markup.replace(/\<\/p\>/gi, "</li></ul></p>");
-	markup = markup.replace(/\/\//gi, "");
-	
+	markup = markup.replace(/\•/gi, "");
+
 	return markup
 });
 
