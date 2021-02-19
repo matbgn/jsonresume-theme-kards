@@ -48,8 +48,13 @@ Handlebars.registerHelper('dontShowBr', function(str, locals, options) {
 	var ctx = utils.context(this, locals, options);
 	var val = utils.value(str, ctx, options);
 
-	// Remove all <br> so we don't show it as markdown
-	return marked(val).replace(/&lt;br&gt;/gi, "");
+	// Remove all <br>// so we don't show it as markdown
+	let markup = marked(val).replace(/\<p\>/gi, "<p><ul><li>");
+	markup = markup.replace(/&lt;br&gt;/gi, "</li><li>");
+	markup = markup.replace(/\<\/p\>/gi, "</li></ul></p>");
+	markup = markup.replace(/\/\//gi, "");
+	
+	return markup
 });
 
 Handlebars.registerHelper('displayUrl', function(str) {

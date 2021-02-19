@@ -354,6 +354,11 @@
                             <div class="timeline-content">
                                 <h4>{{institution}}</h4>
                                 <p>{{area}}</p>
+                                <ul>
+                                {{#each courses}}
+                                    <li>{{ this }}</li>
+                                {{/each}}
+                                </ul>
                             </div>
 
                         </div> <!-- /timeline-block -->
